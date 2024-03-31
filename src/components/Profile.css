@@ -1,0 +1,224 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+.container {
+    width:1360px;
+    margin:0 auto;
+}
+
+button {
+    cursor: pointer
+}
+
+/* header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background: #41989E;
+    padding:30px 40px;
+    border-radius: 0 0 16px 16px;
+    margin-bottom: 30px;
+
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.header-left {
+    display: flex;
+    gap: 30px;
+}
+
+.header-left-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Располагаем элементы в строку */
+    gap: 20px;
+}
+
+
+.header-left-list li {
+    border-bottom: 2px solid transparent; /* Установка прозрачной границы */
+    transition: border-color 0.3s; /* Плавное изменение цвета границы */
+}
+
+.header-left-list li:hover {
+    border-bottom-color: #fff; /* Изменение цвета границы при наведении */
+}
+
+
+/* main */
+
+.main {
+    padding: 0px 40px;
+
+}
+
+.main h2 {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.section-search {
+    /* display:flex;
+    flex-wrap:wrap;
+    gap:20px; */
+
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Определяем ширину колонок */
+    grid-gap: 20px; /* Расстояние между элементами */
+
+    background-color: #dfdfff;
+    border-radius: 16px;
+    padding:30px;
+    margin-bottom: 60px;
+}
+
+.search-1 {
+    /* width:80%; */
+    grid-column: 1; /* Элемент 1 занимает 3 колонки */
+    /* margin-bottom: 30px; */
+
+    
+}
+
+.search-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-column: 2;
+    grid-row: span 2;
+
+    padding:30px;
+    background-color: #FFB342;
+    border-radius: 16px;
+}
+
+.search-2 h2{
+   color:#fff;
+   /* font-size:20px; */
+}
+
+.search-2 button {
+    border:0;
+    padding:20px 40px;
+    border-radius: 16px;
+    background-color:#41989E;
+    color:#fff;
+    font-weight:600;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-2 button:hover {
+    background-color:#387f84;
+}
+
+
+
+
+.search-3 {
+    grid-row: span 1; /* Элементы 2 и 3 занимают 2 ряда */
+    /* margin-bottom: 30px; */
+    /* background-color:#FFB342;
+    border-radius: 16px; */
+
+}
+
+.search-3 div {
+    display:flex;
+    gap:5px;
+}
+
+
+.search-3 button{
+    border:0;
+    padding:20px 40px;
+    border-radius: 16px;
+    background-color:#41989E;
+    color:#fff;
+    font-weight:600;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-3 button:hover {
+   background-color:#FFB342;
+}
+
+
+.section-search-input {
+    border:0;
+    background: #ececec;
+    width:70%;
+    padding:20px 40px;
+    border-radius: 16px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.section-search-btn {
+    border:0;
+    padding:20px 40px;
+    border-radius: 16px;
+    background-color:#41989E;
+    color:#fff;
+    font-weight:600;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.section-search-btn:hover {
+   background-color:#FFB342;
+}
+
+
+/* main actual vacancies */
+
+
+.section-actual-vacancies {
+    background-color: #dfdfff;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.actual-vacancies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap:60px;
+    justify-content:space-between;
+}
+
+.actual-vacancy {
+    
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    width: calc(100% / 2 - 30px);
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 3px solid #FFB342;
+
+    font-size: 20px;
+    
+}
+
+.actual-vacancy a {
+    font-size: 28px;
+    font-weight:600;
+    text-decoration: none;
+    color: #000;
+    
+}
+
+.actual-vacancy a:hover {
+    color:#424242;
+}
