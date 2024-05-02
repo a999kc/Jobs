@@ -1,9 +1,12 @@
 
 import './Registration.css'
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+//import { router } from '../App';
+// { onRegistrationSuccess }
+export default function RegistrationForm() {
 
-export default function RegistrationForm({ onRegistrationSuccess }) {
-
+    const [redirect, setRedirect] = useState(false); // Состояние для перенаправления
     const [email,setEmail] = React.useState('')
     const [password,setPassword] = React.useState('')
     const [emailDirty,setEmailDirty] = React.useState(false)
@@ -59,10 +62,18 @@ export default function RegistrationForm({ onRegistrationSuccess }) {
 
     const submitHandler = () => {
         if (formValid) {
-            onRegistrationSuccess();
+            //onRegistrationSuccess();
+            setRedirect(true); // Устанавливаем состояние перенаправления на true после успешной регистрации
+            
         }
     }
+
+    // if (redirect) {
+    //   return <Link to="/main" />;
+    // }
   
+
+    
     return (
       <div className="registration-form-div">
         <form className="registration-form">
@@ -73,7 +84,9 @@ export default function RegistrationForm({ onRegistrationSuccess }) {
           {(passwordDirty && passwordError) && <div style={{color:'red'}}>{passwordError}</div>}
           <input className="registration-form-input" onChange={(e) => passwordHandler(e)} value={password} onBlur={e => blurHandler(e)} name="password" type="password" placeholder="Введите ваш пароль..."></input>
   
-          <button className="registration-form-btn" onClick={submitHandler} disabled={!formValid} type="submit">ВОЙТИ</button>
+          <button className="registration-form-btn" onClick={submitHandler} disabled={!formValid} type="submit"><Link to='/main'>ВОЙТИ</Link></button>
+          {/* <a href="/forgot-password">Забыли пароль?</a> */}
+          <Link to='/ForgetPassword'>Забыли пароль?</Link>
         </form>
       </div>
     );
