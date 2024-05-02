@@ -3,6 +3,9 @@ import bcrypt
 import datetime
 import uuid
 import os
+import sys
+sys.path.append('../src/components')
+from Registration import email, password
 
 # Получение значения переменной среды
 supabase_url = os.getenv('SUPABASE_URL')
