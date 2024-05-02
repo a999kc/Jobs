@@ -3,7 +3,6 @@ import bcrypt
 import datetime
 import uuid
 import os
-import sys
 
 # Получение значения переменной среды
 supabase_url = os.getenv('SUPABASE_URL')
@@ -80,12 +79,3 @@ register_user(email, password)
 # После успешной регистрации, вы можете проверить, что пользователь был добавлен в базу данных, например:
 # Получаем пользователя по email
 new_user = user_client.get_user_by_email(email)
-
-# Выводим информацию о новом пользователе, если он был добавлен успешно
-if new_user:
-    print("Новый пользователь успешно зарегистрирован:")
-    print("ID:", new_user['id'])
-    print("Email:", new_user['email'])
-    print("Хэшированный пароль:", new_user['hashed_password'])
-else:
-    print("Ошибка при регистрации пользователя")
