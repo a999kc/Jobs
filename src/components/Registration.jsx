@@ -67,18 +67,8 @@ export default function RegistrationForm() {
             
         }
     }
-<<<<<<< HEAD
     console.log(email)
     console.log(password)
-=======
-
-    // if (redirect) {
-    //   return <Link to="/main" />;
-    // }
-  
-
-    
->>>>>>> 97de602d8c17a8cbb9ab9de1e19089084c4f2503
     return (
       <div className="registration-form-div">
         <form className="registration-form">

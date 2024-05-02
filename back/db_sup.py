@@ -72,10 +72,7 @@ def reset_password_with_token(token, new_password):
 user_client = SupabaseUserClient()
 
 # Регистрируем нового пользователя
-email = "danila@yandex.ru"
-password = "12345678"
+email = "danilashpilka@gmail.com"
+password = "12345678jsnnsji"
 register_user(email, password)
 
-# После успешной регистрации, вы можете проверить, что пользователь был добавлен в базу данных, например:
-# Получаем пользователя по email
-new_user = user_client.get_user_by_email(email)
