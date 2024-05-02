@@ -4,8 +4,6 @@ import datetime
 import uuid
 import os
 import sys
-sys.path.append('../src/components')
-from Registration import email, password
 
 # Получение значения переменной среды
 supabase_url = os.getenv('SUPABASE_URL')
@@ -36,13 +34,16 @@ user_client = SupabaseUserClient()
 
 # Регистрация пользователя
 def register_user(email, password):
-    hashed_password = bcrypt.hash(password)
-    user_client.insert_user(email, hashed_password)
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password.encode(), salt)
+    # Преобразуем хэшированный пароль в строку
+    hashed_password_str = hashed_password.decode()
+    user_client.insert_user(email, hashed_password_str)
 
 # Аутентификация пользователя
 def authenticate_user(email, password):
     user = user_client.get_user_by_email(email)
-    if user and bcrypt.verify(password, user['hashed_password']):
+    if user and bcrypt.checkpw(password.encode(), user['hashed_password']):
         return True
     return False
 
@@ -60,7 +61,31 @@ def generate_reset_token(email):
 def reset_password_with_token(token, new_password):
     user = user_client.get_user_by_reset_token(token)
     if user and user['reset_token_expires_at'] > datetime.datetime.now():
-        hashed_password = bcrypt.hash(new_password)
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(new_password.encode(), salt)
         user_client.update_user_password(user['id'], hashed_password)
         return True
     return False
+
+# Перед использованием этого кода убедитесь, что переменные supabase_url и supabase_key установлены как переменные среды в вашей системе
+
+# Создаем экземпляр клиента для работы с пользователями
+user_client = SupabaseUserClient()
+
+# Регистрируем нового пользователя
+email = "danila@yandex.ru"
+password = "12345678"
+register_user(email, password)
+
+# После успешной регистрации, вы можете проверить, что пользователь был добавлен в базу данных, например:
+# Получаем пользователя по email
+new_user = user_client.get_user_by_email(email)
+
+# Выводим информацию о новом пользователе, если он был добавлен успешно
+if new_user:
+    print("Новый пользователь успешно зарегистрирован:")
+    print("ID:", new_user['id'])
+    print("Email:", new_user['email'])
+    print("Хэшированный пароль:", new_user['hashed_password'])
+else:
+    print("Ошибка при регистрации пользователя")

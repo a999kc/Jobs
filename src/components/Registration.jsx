@@ -62,7 +62,8 @@ export default function RegistrationForm({ onRegistrationSuccess }) {
             onRegistrationSuccess();
         }
     }
-  
+    console.log(email)
+    console.log(password)
     return (
       <div className="registration-form-div">
         <form className="registration-form">
