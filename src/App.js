@@ -8,9 +8,11 @@ import NotFoundPage from './components/NotFoundPage.jsx';
 import { Router, Routes, Route } from 'react-router-dom';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+
 import Cards from './components/Cards.jsx'
-import { CardsFixedArray} from './components/Cards.jsx';
+//import { CardsFixedArray} from './components/Cards.jsx';
 import ForgetPassword from './components/ForgetPassword.jsx';
+import Test from './components/Test.jsx';
 
 export const router = createBrowserRouter([
   { path:"/",
@@ -25,7 +27,13 @@ export const router = createBrowserRouter([
     path:"/ForgetPassword",
     element:<ForgetPassword/>,
     errorElement:<NotFoundPage/>
-  }
+  },
+  {
+    path:"/Test",
+    element:<Test/>,
+    errorElement:<NotFoundPage/>
+  },
+
 ])
 
 export default function App() {
@@ -35,7 +43,7 @@ export default function App() {
     setIsRegistered(true);
   };
 
-  console.log(CardsFixedArray)
+  console.log(Cards)
   return (
     // <div className="App">
     //  {/* <RegistrationForm/>
@@ -57,10 +65,11 @@ export default function App() {
     // </Router>
     <RouterProvider router={router}>
       <div className="App">
-                {/* <Routes>
+                <Routes>
                     <Route path="/" element={<RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />} />
-                    <Route path="/main" element={<MainPage />} />
-                </Routes> */}
+                    <Route path="/main" element={<Profile/>} />
+  
+                </Routes>
       </div>
     </RouterProvider>
   

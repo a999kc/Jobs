@@ -4,6 +4,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 //import { router } from '../App';
 // { onRegistrationSuccess }
+
+export function submitForm(email, password) {
+  // В этой функции вы можете выполнить необходимые действия с email и password
+  console.log("Email:", email);
+  console.log("Password:", password);
+  return [email,password]
+}
+
+
 export default function RegistrationForm() {
 
     const [redirect, setRedirect] = useState(false); // Состояние для перенаправления
@@ -61,24 +70,21 @@ export default function RegistrationForm() {
     }
 
     const submitHandler = () => {
-        if (formValid) {
-            //onRegistrationSuccess();
-            setRedirect(true); // Устанавливаем состояние перенаправления на true после успешной регистрации
+        // if (formValid) {
+        //     //onRegistrationSuccess();
+        //     setRedirect(true); // Устанавливаем состояние перенаправления на true после успешной регистрации
             
-        }
-    }
-<<<<<<< HEAD
-    console.log(email)
-    console.log(password)
-=======
+        // }
+        submitForm(email, password);
 
-    // if (redirect) {
-    //   return <Link to="/main" />;
-    // }
-  
+    }
 
     
->>>>>>> 97de602d8c17a8cbb9ab9de1e19089084c4f2503
+    console.log(email)
+    console.log(password)
+    console.log(redirect)
+   
+
     return (
       <div className="registration-form-div">
         <form className="registration-form">
@@ -90,9 +96,12 @@ export default function RegistrationForm() {
           <input className="registration-form-input" onChange={(e) => passwordHandler(e)} value={password} onBlur={e => blurHandler(e)} name="password" type="password" placeholder="Введите ваш пароль..."></input>
   
           <button className="registration-form-btn" onClick={submitHandler} disabled={!formValid} type="submit"><Link to='/main'>ВОЙТИ</Link></button>
-          {/* <a href="/forgot-password">Забыли пароль?</a> */}
+          
           <Link to='/ForgetPassword'>Забыли пароль?</Link>
         </form>
       </div>
     );
   }
+
+
+  

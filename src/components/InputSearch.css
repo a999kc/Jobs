@@ -1,0 +1,20 @@
+.section-search-input {
+    margin-bottom: 10px;
+}
+
+.section-search-options {
+    display:hidden;
+    width:70%;
+    background: #ececec;
+    border-radius: 16px;
+    padding: 20px 40px;
+    list-style: none;
+}
+
+.section-search-option {
+    width:70%;
+    background: #ececec;
+    border-radius: 16px;
+    padding: 20px 40px;
+    z-index:3;
+}
