@@ -1,0 +1,94 @@
+.load-more-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Переходы для плавного эффекта */
+}
+
+.load-more-button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.sort-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.sort-buttons button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.sort-buttons button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+.actual-vacancy {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+.actual-vacancy span.salary {
+    color: #4CAF50; /* Зеленый цвет */
+    font-weight: bold; /* Жирный шрифт */
+}
+
+.actual-vacancy a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.actual-vacancy a:hover {
+    text-decoration: underline;
+}
+
+.actual-vacancy span {
+    display: block;
+    margin-top: 10px;
+}
+
+.actual-vacancy .salary {
+    font-weight: bold;
+}
+
+.actual-vacancy .snippet {
+    font-style: italic;
+}
+

@@ -18,7 +18,7 @@ button {
 .header {
     display: flex;
     justify-content: space-between;
-    background: #41989E;
+    background: #007bff;
     padding:30px 40px;
     border-radius: 0 0 16px 16px;
     margin-bottom: 30px;
@@ -112,7 +112,7 @@ button {
     border:0;
     padding:20px 40px;
     border-radius: 16px;
-    background-color:#41989E;
+    background-color:#4CAF50;
     color:#fff;
     font-weight:600;
     font-size: 16px;
@@ -120,7 +120,7 @@ button {
 }
 
 .search-2 button:hover {
-    background-color:#387f84;
+    background-color:#87b088;
 }
 
 

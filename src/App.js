@@ -13,6 +13,7 @@ import Cards from './components/Cards.jsx'
 //import { CardsFixedArray} from './components/Cards.jsx';
 import ForgetPassword from './components/ForgetPassword.jsx';
 import Test from './components/Test.jsx';
+import ResetPassword from './components/ResetPassword.jsx'
 
 export const router = createBrowserRouter([
   { path:"/",
@@ -33,6 +34,11 @@ export const router = createBrowserRouter([
     element:<Test/>,
     errorElement:<NotFoundPage/>
   },
+  {
+    path:"/ResetPassword",
+    element:<ResetPassword/>,
+    errorElement:<NotFoundPage/>
+  },
 
 ])
 
@@ -45,24 +51,6 @@ export default function App() {
 
   console.log(Cards)
   return (
-    // <div className="App">
-    //  {/* <RegistrationForm/>
-    //   {/* <Profile /> */}
-    //   {isRegistered ? (
-    //     <Profile />
-    //   ) : (
-    //     <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />
-    //   )}
-    // </div>
-    // <Router>
-    // <div className="App">
-    //   <Routes>
-    //     <Route path="*" element={<RegistrationForm />} />
-    //     <Route path="*" element={<Profile />} />
-    //     {/* Другие маршруты приложения */}
-    //   </Routes>
-    // </div>
-    // </Router>
     <RouterProvider router={router}>
       <div className="App">
                 <Routes>

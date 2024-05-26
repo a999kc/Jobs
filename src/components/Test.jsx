@@ -119,13 +119,13 @@ function Result({correct}) {
   return (
     <div className="result">
       <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
-      {Object.entries(professions).map(([profession, value]) => (
+      {/* {Object.entries(professions).map(([profession, value]) => (
         <div key={profession}>
           <span>Вот ваш результат: {profession}: {value}</span>
           <br />
         </div>
-      ))}
-      <p>Профессия с максимальным числом очков: {maxProfession}</p>
+      ))} */}
+      <p className="result_text">Вам подходит: {maxProfession}</p>
       
       <Link to="/main">
         <button>Выйти на главную</button>
@@ -144,7 +144,7 @@ function Game({question,onClickVariant,step}) {
       <div className="progress">
         <div style={{ width: `${percent}%` }} className="progress__inner"></div>
       </div>
-      <h1>{question.title}</h1>
+      <h1 className="question_title">{question.title}</h1>
       <ul>
         {question.variants.map((variant,index) => 
         <li onClick={()=>onClickVariant(index)} key={variant} >

@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 //import { router } from '../App';
 // { onRegistrationSuccess }
 
-export function submitForm(email, password) {
-  // В этой функции вы можете выполнить необходимые действия с email и password
-  console.log("Email:", email);
-  console.log("Password:", password);
-  return [email,password]
-}
+import { createClient } from '@supabase/supabase-js';
+import bcrypt from 'bcryptjs';
+
+const supabaseUrl = 'https://mzqjwiuyyzcookevinbr.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im16cWp3aXV5eXpjb29rZXZpbmJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ2NzM1MDgsImV4cCI6MjAzMDI0OTUwOH0.8-2fjOOrfrY5UO6HMVl3CH_dQ5DnTHkl7gpSmTF22pE';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+
+
 
 
 export default function RegistrationForm() {
@@ -69,14 +72,80 @@ export default function RegistrationForm() {
       }
     }
 
-    const submitHandler = () => {
-        // if (formValid) {
-        //     //onRegistrationSuccess();
-        //     setRedirect(true); // Устанавливаем состояние перенаправления на true после успешной регистрации
-            
-        // }
-        submitForm(email, password);
 
+    function submitForm(email, password) {
+      console.log(email, password)
+      
+    }
+
+    // const submitHandler = async () => {
+        
+    //     try {
+    //         const { user, error } = await supabase.auth.signUp({email,password});
+    //         if (error) {
+    //             console.error('Error registering user:', error.message);
+    //             // Обработка ошибки регистрации пользователя
+    //         } else {
+    //             console.log('User registered successfully:', user);
+    //             // Пользователь успешно зарегистрирован
+    //             // Можете добавить дополнительные действия, например, перенаправление пользователя
+    //         }
+    //     } catch (error) {
+    //         console.error('Error registering user:', error.message);
+    //         // Обработка других ошибок
+    //     }
+    //     submitForm(email, password);
+
+    // }
+
+
+    const hashPassword = async (password) => {
+      try {
+          const salt = await bcrypt.genSalt(10);
+          const hashedPassword = await bcrypt.hash(password, salt);
+          return hashedPassword;
+      } catch (error) {
+          console.error('Error hashing password:', error);
+          throw error;
+      }
+    };
+
+    const submitHandler = async (e) => {
+      e.preventDefault();
+      if (!formValid) return;
+
+  
+      try {
+        const hashedPassword = await hashPassword(password);
+        const { user, error } = await supabase.auth.signUp({ email, password: hashedPassword });
+        if (error) {
+          console.error('Error registering user:', error.message);
+        } else {
+          console.log('User registered successfully:', user.email,user.password );
+  
+          // Добавление данных пользователя в таблицу
+          const { error: insertError } = await supabase
+            .from('users')
+            .insert([{ email: user.email, hashed_password: hashedPassword, created_at: new Date(),preferences: null }]);
+            
+          if (insertError) {
+            console.error('Error inserting user data:', insertError.message);
+          } else {
+            console.log('User data inserted successfully');
+            setRedirect(true);
+          }
+        }
+      } catch (error) {
+        console.error('Error registering user:', error.message);
+      }
+      submitForm(email, password)
+    };
+
+
+    if (redirect) {
+      // Используйте метод перенаправления, например, react-router-dom's useHistory
+      // history.push('/main');
+      // или компонент <Redirect /> из react-router-dom
     }
 
     

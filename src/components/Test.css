@@ -89,6 +89,7 @@
 
 .Test h1 {
   margin: 0;
+  margin-bottom: 20px;
 }
 
 .Test ul {
@@ -108,3 +109,11 @@
 .Test ul li:hover {
   border: 2px solid rgba(0, 0, 0, 0.3);
 } 
+
+
+.result_text {
+  margin-top: 20px;
+  font-weight: 700;
+  color:#6a5be2;
+  font-size:24px;
+}
